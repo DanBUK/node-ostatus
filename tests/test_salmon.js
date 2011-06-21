@@ -19,7 +19,7 @@ Vows.describe('Salmon').addBatch({
 		},
 		'can be used to sign': {
 		    topic: function() {
-			this.me = { data: 'Hello World',
+			this.me = { data: Salmon.base64url_encode('Hello World'),
 				    data_type: 'application/test' };
 			this.sig = Salmon.generateSignature(this.me, this.key.private);
 			this.callback();

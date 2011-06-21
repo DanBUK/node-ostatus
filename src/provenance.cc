@@ -241,6 +241,10 @@ static Handle<Value> VerifyRSASHA256(const Arguments &args) {
   Handle<Object> sig = args[1]->ToObject();
   int sigLen = Buffer::Length(sig);
   unsigned char *sigBuf = (unsigned char *)Buffer::Data(sig);
+  printf("sig(%i):", sigLen);
+  for(int i=0; i < sigLen;i++)
+    printf(" %02X",sigBuf[i]);
+    printf("\n");
   Handle<Object> pubKey = args[2]->ToObject();
 
   /* Prepare key */
@@ -259,10 +263,6 @@ static Handle<Value> VerifyRSASHA256(const Arguments &args) {
   for(int i=0; i < rsigLen;i++)
     printf(" %02X",rsigBuf[i]);
   printf("\n");
-  /*printf("sig(%i):", sigLen);
-  for(int i=0; i < sigLen;i++)
-    printf(" %02X",sigBuf[i]);
-    printf("\n");*/
 
   /* Compare to digest */
   BIO *emsa = EMSA_PKCS1_v1_5(m, BN_num_bytes(rsa->n));
