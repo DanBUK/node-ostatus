@@ -23,7 +23,7 @@
  * THE SOFTWARE.
 */
 
-var Ostatus = require('ostatus'),
+var Ostatus = require('../lib/ostatus/index.js'),
 	Util = require('util'); 
 
 var _main = function(argv) {
