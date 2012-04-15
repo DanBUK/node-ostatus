@@ -23,7 +23,7 @@
  * THE SOFTWARE.
 */
 
-var Ostatus = require('ostatus'),
+var Ostatus = require('../lib/ostatus/index.js'),
 	Util = require('util'),
 	Hcard = Ostatus.hcard,
 	Webfinger = Ostatus.webfinger;
@@ -36,7 +36,7 @@ var _main = function(argv) {
 	}
 	
 	// Wrap the request in a try.. catch to nicely die on errors
-	try {
+	// try {
 		
 		// Webfinger require acct: reference, we add if required
 		var reference = argv[2];
@@ -46,9 +46,9 @@ var _main = function(argv) {
 			reference = "acct:" + reference;
 		}
 		Webfinger.lookup(reference, _result);
-	} catch (error) {
-		_error(error);
-	}
+	// } catch (error) {
+	// 	_error(error);
+	// }
 };
 
 var _error = function(error) {
