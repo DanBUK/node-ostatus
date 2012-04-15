@@ -41,14 +41,14 @@ var _main = function(argv) {
 	}
 	
 	// Wrap the request in a try.. catch to nicely die on errors
-	// try {
+	try {
 		Ostatus.profile(argv[2], function(err, result) {
 			if (err) return _error(err);
 			_result(result);
 		}); 
-	// } catch (error) {
-	//	_error(error);
-	// }
+	} catch (error) {
+		_error(error);
+	}
 };
 
 var _error = function(error) {
