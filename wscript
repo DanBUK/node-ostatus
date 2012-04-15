@@ -15,10 +15,11 @@ def configure(conf):
   conf.check_tool("compiler_cc")
   conf.check_tool("node_addon")
 
-  conf.check(lib='ssl', libpath=['/usr/lib', '/usr/local/lib'], uselib_store='OPENSSL')
+  conf.check(lib='ssl', libpath=['/opt/local/lib', '/usr/lib', '/usr/local/lib'], uselib_store='OPENSSL')
 
 def build(bld):
   obj = bld.new_task_gen("cxx", "shlib", "node_addon")
   obj.target = "provenance"
-  obj.source = ["src/provenance.cc"]
+  obj.source = "src/provenance.cc"
+#  obj.lib = "openssl"
   obj.uselib = "OPENSSL"
